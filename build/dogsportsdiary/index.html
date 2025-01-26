@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dog Sports Diary</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
+    <style>
+        html {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .footer {
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="https://unpkg.com/i18next/i18next.js"></script>
+    <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.js"></script>
+    <script src="https://unpkg.com/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.js"></script>
+    <script>
+        i18next
+            .use(i18nextHttpBackend)
+            .use(i18nextBrowserLanguageDetector)
+            .init({
+                fallbackLng: 'en',
+                ns: ['translation'],
+                defaultNS: 'translation',
+                fallbackNS: 'translation',
+                backend: {
+                    loadPath: 'i18n/{{lng}}.json',
+                    crossDomain: true
+                }
+            }, function (err, t) {
+                if (err) {
+                    console.error('Error initializing i18next: ', err);
+                    return;
+                }
+                setTimeout(function () {
+                    updateContent();
+                }, 100);
+            });
+
+        i18next.on('languageChanged', () => {
+            updateContent();
+        });
+
+        function updateContent() {
+            document.body.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                element.textContent = i18next.t(key);
+            });
+        }
+
+        function changeLanguage(lang) {
+            i18next.changeLanguage(lang);
+        }
+    </script>
+
+    <nav class="navbar is-info" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="index.html">
+                <img src="res/app-icon.png" alt="App Icon" width="30" height="30">
+                <span class="ml-2" data-i18n="title">
+                </span>
+            </a>
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarMenu" class="navbar-menu">
+            <div class="navbar-end">
+                <a class="navbar-item" data-i18n="getApp"></a>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link" data-i18n="language"></a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="#" data-i18n="language.english"></a>
+                        <a class="navbar-item" href="#" data-i18n="language.german"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero is-fullheight-with-navbar">
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body is-success">
+            <div class="container has-text-centered">
+                <div class="columns is-flex is-vcentered">
+                    <div class="column is-two-thirds">
+                        <!-- Main content here -->
+                        <p class="title" data-i18n="main.focus"></p>
+                        <p class="subtitle" data-i18n="main.slogan"></p>
+                    </div>
+                    <div class="column">
+                        <figure class="image is-1by2">
+                            <img src="res/app-image.png" alt="App Image">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hero footer: will stick at the bottom -->
+        <div class="hero-foot">
+            <nav class="tabs is-boxed is-fullwidth">
+                <div class="container">
+                    <p>
+                        <strong data-i18n="title"></strong> &copy; 2024. All rights reserved.
+                    </p>
+                    <p>
+                        <a href="pages/privacy-policy.html" data-i18n="privacyPolicy"></a>
+                    </p>
+                </div>
+            </nav>
+        </div>
+    </section>
+</body>
+
+</html>

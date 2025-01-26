@@ -612,9 +612,12 @@ header {
 .project_thumbnail{
     text-align: center;
 }
-.project-img{
-    width:150px;
-    height:100px;
+.project-img {
+    max-width: 150px;
+    max-height: 100px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
 }
 .project_details{
     padding: 10px;
@@ -724,8 +727,11 @@ header {
 
 
 .company-logo {
-    width: 100px;
-    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
 }
 
 .author-profile-img {
