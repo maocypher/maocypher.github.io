@@ -1,0 +1,21 @@
+<div class="share-page">
+  <p class="share-text">Share this on &rarr;</p>
+  <a 
+    href="javascript:void(0)"
+    onclick="share()"
+    class="mastodon-share-button"
+    style="margin-top:5px;"
+  >
+    Mastodon
+  </a>
+</div>
+
+<script>
+function share() {
+  const instance = prompt("Enter your Mastodon instance URL (e.g., mastodon.social):", "mastodon.social");
+  if (instance) {
+    const text = encodeURIComponent("{{page.title}} {{site.url}}{{page.url}}");
+    window.open(`https://${instance}/share?text=${text}`, '_blank');
+  }
+}
+</script>

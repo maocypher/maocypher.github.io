@@ -1,0 +1,48 @@
+# Jekyll specific
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
+
+# Logs
+*.log
+
+# Ruby
+.ruby-version
+.ruby-gemset
+Gemfile.lock
+
+# Environment variables
+.env
+
+# Mac OS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.swn
+.project
+*.sublime-project
+*.sublime-workspace
+
+# Temporary files
+*.bak
+*.tmp
+*~
+
+# Build output
+dist/
+build/
+out/
