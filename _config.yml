@@ -2,7 +2,7 @@ title: maocypher.dev
 subtitle: 
 description: My personal webpage
 
-url: "https://maocypher.dev" # the base hostname & protocol for your site, e.g. https://example.github.io
+url: "https://maocypher.github.io" # the base hostname & protocol for your site, e.g. https://example.github.io
 #baseurl: "" # the subpath of your site, e.g. /blog
 
 # Navigation
